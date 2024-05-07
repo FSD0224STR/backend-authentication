@@ -64,7 +64,7 @@ const getMyUserInfo = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-    if (req.user.id !== req.params.id) return res.status(400).json('No puedes borrar a alguien que no sea tu propio user')
+    // if (req.user.id !== req.params.id) return res.status(400).json('No puedes borrar a alguien que no sea tu propio user')
     try {
         const data = await userModel.findByIdAndDelete(req.params.id)
         if (data) return res.json('borrado')

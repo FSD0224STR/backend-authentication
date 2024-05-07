@@ -3,10 +3,10 @@ const { addUser, getUsers, deleteUser, checkUser, isAuthenticated, getMyUserInfo
 
 const userRouter = Router()
 
-userRouter.post('/register', addUser)
+userRouter.post('/add', isAuthenticated, addUser)
 userRouter.post('/login', checkUser)
-userRouter.get('/', isAuthenticated, isAdmin, getUsers)
-userRouter.get('/quiensoy', isAuthenticated, getMyUserInfo)
-userRouter.delete('/:id', isAuthenticated, deleteUser)
+userRouter.get('/', getUsers)
+userRouter.get('/me', isAuthenticated, getMyUserInfo)
+userRouter.delete('/:id', isAuthenticated, isAdmin, deleteUser)
 
 module.exports = { userRouter };
